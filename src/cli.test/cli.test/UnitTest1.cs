@@ -10,9 +10,16 @@ namespace cli.test
         }
 
         [Test]
-        public void Test1()
+        public void TestFrameworkPass()
         {
+            Program.Main(null);
             Assert.Pass();
+        }
+
+        [Test]
+        public void TestFrameworkFail()
+        {
+            Assert.Fail();
         }
     }
 }
