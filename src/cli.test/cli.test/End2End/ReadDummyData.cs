@@ -17,8 +17,7 @@ namespace cli.test.End2End
         [SetUp]
         public void Setup()
         {
-            var todo = new Todo() { Id = 1, Title = "Dummy", IsCompleted = false };
-            File.WriteAllText(@"c:\todo.json", JsonConvert.SerializeObject(todo));
+            File.WriteAllText(@"c:\todo.json", "[{\"Id\":1,\"Title\":\"Dummy\",\"IsCompleted\":false}, {\"Id\":2,\"Title\":\"Dummy2\",\"IsCompleted\":false}]");
         }
 
         [Test]

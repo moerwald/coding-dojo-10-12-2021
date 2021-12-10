@@ -15,12 +15,5 @@ namespace cli.test
             Program.Main(null);
             Assert.Pass();
         }
-
-        [Test]
-        [Ignore("Was just for env-setup tests ...")]
-        public void TestFrameworkFail()
-        {
-            Assert.Fail();
-        }
     }
 }
