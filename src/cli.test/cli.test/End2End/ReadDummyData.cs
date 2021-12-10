@@ -1,4 +1,5 @@
 ﻿using cli.Model;
+using System;
 using FluentAssertions;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -15,15 +16,14 @@ namespace cli.test.End2End
     {
 
         [SetUp]
-        public void Setup()
-        {
+        public void Setup() 
+            =>
             File.WriteAllText(@"c:\todo.json", "[{\"Id\":1,\"Title\":\"Dummy\",\"IsCompleted\":false}, {\"Id\":2,\"Title\":\"Dummy2\",\"IsCompleted\":false}]");
-        }
 
         [Test]
         public void ShowTodos()
         {
-            new SutRunner().RunSut(string.Empty).Should().Be("1 Dummy false");
+            SutRunner.Run("ShowAll").Should().Be($"1 Dummy False{Environment.NewLine}2 Dummy2 False{Environment.NewLine}");
         }
     }
 }
