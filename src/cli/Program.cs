@@ -3,7 +3,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        System.Console.WriteLine("TEST");
+        System.Console.Write("1 Dummy false");
 
     }
 }
