@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cli", "cli\cli.csproj", "{8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli.test", "cli.test\cli.test\cli.test.csproj", "{D78484D5-6FD1-411C-8695-894154758E65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli.end2end", "cli.end2end\cli.end2end\cli.end2end.csproj", "{F37BE35E-A54E-4002-9F7F-FBBC35C76912}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{D78484D5-6FD1-411C-8695-894154758E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D78484D5-6FD1-411C-8695-894154758E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D78484D5-6FD1-411C-8695-894154758E65}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F37BE35E-A54E-4002-9F7F-FBBC35C76912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F37BE35E-A54E-4002-9F7F-FBBC35C76912}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F37BE35E-A54E-4002-9F7F-FBBC35C76912}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F37BE35E-A54E-4002-9F7F-FBBC35C76912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
