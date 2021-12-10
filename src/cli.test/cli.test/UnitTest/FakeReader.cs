@@ -9,5 +9,4 @@ namespace cli.test.UnitTest
             => 
             new List<Todo> { new Todo { Id = 1, IsCompleted = false, Title = "Dummy" } };
     }
-
 }

@@ -4,23 +4,22 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
 
 public static partial class Program
 {
-    public class TodoListReader : ITodoListReader
+    public class TodoListWriter : ITodoListWriter
     {
         private string filepath;
 
-        public TodoListReader(string filepath)
+        public TodoListWriter(string filepath)
         {
             this.filepath = filepath ?? throw new NullReferenceException(nameof(filepath));
-
-            // Todo check for existense
         }
 
-        public List<Todo> ReadAll() =>
-            JsonConvert.DeserializeObject<List<Todo>>(File.ReadAllText(this.filepath));
+        public void WriteAll(List<Todo> lstTodos)
+        {
+            File.WriteAllText(filepath, JsonConvert.SerializeObject(lstTodos));
+        }
     }
 
 }

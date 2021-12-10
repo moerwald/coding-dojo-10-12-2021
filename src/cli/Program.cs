@@ -7,7 +7,10 @@ public static partial class Program
     public static void Main(string[] args)
     {
 
-        var controller = new Controller(new TodoListReader(JsonFilePath));
+        var controller = new Controller(
+            new TodoListReader(JsonFilePath), 
+            new TodoListWriter(JsonFilePath));
+
         var listOfTodos = controller.HandleCommand(args[0]);
 
         var listOfString = new TodoFormater().Format(listOfTodos);
