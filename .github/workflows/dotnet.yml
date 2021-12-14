@@ -16,12 +16,12 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore src
     - name: Build
       run: dotnet build src --no-restore
     - name: Publish
-      run: dotnet publish src/cli -r ubuntu-x64 --self-contained=true
+      run: dotnet publish src/cli -r ubuntu-x64 --self-contained=true /p:PublishSingleFile=true
     - name: Test
       run: dotnet test src --no-build --verbosity normal
