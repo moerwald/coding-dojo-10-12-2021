@@ -1,9 +1,9 @@
-﻿using cli.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TodoApp.Model;
 
-public static partial class Program
+namespace TodoApp
 {
     public class Controller
     {
@@ -16,12 +16,12 @@ public static partial class Program
             _writer = writer;
         }
 
-        public List<Todo> HandleCommand(string command, string title = null)
+        public List<Todo> HandleCommand(string command, string? title = null)
             => command switch
             {
                 "ShowAll" => ReadAll(),
-                "Add" => Add(title)
-
+                "Add" => Add(title),
+                _ => throw new NotImplementedException()
             };
 
         private List<Todo> Add(string title)

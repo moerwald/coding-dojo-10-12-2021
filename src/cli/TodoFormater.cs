@@ -1,21 +1,16 @@
-﻿using cli.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using TodoApp.Model;
 
-public static partial class Program
+namespace TodoApp
 {
     public class TodoFormater
     {
-
-        public TodoFormater()
-        {
-        }
-
-        public IEnumerable<string> Format(List<Todo> todoLst)
+        public static IEnumerable<string> Format(List<Todo> todoLst)
         {
             foreach (var item in todoLst)
             {
-                yield return $"{item.Id} {item.Title} {item.IsCompleted}" ;
+                yield return $"{item.Id} {item.Title} {item.IsCompleted}";
             }
         }
     }

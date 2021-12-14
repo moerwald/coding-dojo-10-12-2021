@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cli", "cli\cli.csproj", "{8A2301BC-0A08-4599-8016-15E720F621C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp", "cli\TodoApp.csproj", "{8A2301BC-0A08-4599-8016-15E720F621C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cli.test", "cli.test\cli.test\cli.test.csproj", "{D78484D5-6FD1-411C-8695-894154758E65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.Tests", "cli.test\cli.test\TodoApp.Tests.csproj", "{D78484D5-6FD1-411C-8695-894154758E65}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cli.end2end", "cli.end2end\cli.end2end\cli.end2end.csproj", "{5E3CC998-D1E8-49B7-8AA2-692E384F5AEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.End2EndTests", "cli.end2end\cli.end2end\TodoApp.End2EndTests.csproj", "{5E3CC998-D1E8-49B7-8AA2-692E384F5AEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

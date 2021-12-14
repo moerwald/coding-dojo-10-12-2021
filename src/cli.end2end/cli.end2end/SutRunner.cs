@@ -5,57 +5,55 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace cli.test.End2End
+namespace TodoApp.End2EndTests
 {
-    public partial class ReadDummyData
+    public static class SutRunner
     {
-        public static class SutRunner
+        public static string Run(string args)
         {
-            public static string Run(string args)
+            // use ProcessStartInfo class.
+            ProcessStartInfo startInfo = new()
             {
-                // use ProcessStartInfo class.
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.CreateNoWindow = false;
-                startInfo.UseShellExecute = false;
+                CreateNoWindow = false,
+                UseShellExecute = false
+            };
 
-                // Get path to exe
-                var pathToTestDll = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                var pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\cli.exe");
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\cli");
-                }
-
-                startInfo.FileName = pathToExt;
-
-                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                startInfo.RedirectStandardOutput = true;
-
-                // set arguments.
-                startInfo.Arguments = args;
-
-                var processStdout = string.Empty;
-                try
-                {
-                    // start with the info we specified.
-                    using Process process = Process.Start(startInfo);
-                    // Redirect stdout to reader
-                    using (StreamReader reader = process.StandardOutput)
-                    {
-                        processStdout = reader.ReadToEnd();
-                    }
-
-                    process.WaitForExit();
-                }
-                catch (Exception ex)
-                {
-                    // Log error.
-                    Assert.Fail(ex.ToString());
-                }
-
-                return processStdout;
+            // Get path to exe
+            var pathToTestDll = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\cli.exe");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\cli");
             }
-        }
 
+            startInfo.FileName = pathToExt;
+
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.RedirectStandardOutput = true;
+
+            // set arguments.
+            startInfo.Arguments = args;
+
+            var processStdout = string.Empty;
+            try
+            {
+                // start with the info we specified.
+                using Process process = Process.Start(startInfo);
+                // Redirect stdout to reader
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    processStdout = reader.ReadToEnd();
+                }
+
+                process.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                // Log error.
+                Assert.Fail(ex.ToString());
+            }
+
+            return processStdout;
+        }
     }
 }

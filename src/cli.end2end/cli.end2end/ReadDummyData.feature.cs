@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace cli.end2end
+namespace TodoApp.End2EndTests
 {
     using TechTalk.SpecFlow;
     using System;

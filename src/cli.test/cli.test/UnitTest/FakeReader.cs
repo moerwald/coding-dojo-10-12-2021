@@ -1,12 +1,12 @@
-﻿using cli.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using TodoApp.Model;
 
-namespace cli.test.UnitTest
+namespace TodoApp.Tests.UnitTest
 {
     public class FakeReader : ITodoListReader
     {
-        public List<Todo> ReadAll() 
-            => 
-            new List<Todo> { new Todo { Id = 1, IsCompleted = false, Title = "Dummy" } };
+        public List<Todo> ReadAll()
+            =>
+            new() { new Todo { Id = 1, IsCompleted = false, Title = "Dummy" } };
     }
 }

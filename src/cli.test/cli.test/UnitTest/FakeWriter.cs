@@ -1,7 +1,7 @@
-﻿using cli.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using TodoApp.Model;
 
-namespace cli.test.UnitTest
+namespace TodoApp.Tests.UnitTest
 {
     public class FakeWriter : ITodoListWriter
     {
@@ -15,5 +15,4 @@ namespace cli.test.UnitTest
             Called = true;
         }
     }
-
 }

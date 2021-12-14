@@ -1,24 +1,25 @@
 ﻿using System;
 
-public static partial class Program
+namespace TodoApp
 {
-    public static string JsonFilePath = @"C:\todo.json";
-        
-    public static void Main(string[] args)
+    public static class Program
     {
+        public static string JsonFilePath = @"C:\todo.json";
 
-        var controller = new Controller(
-            new TodoListReader(JsonFilePath), 
-            new TodoListWriter(JsonFilePath));
-
-        var listOfTodos = controller.HandleCommand(args[0]);
-
-        var listOfString = new TodoFormater().Format(listOfTodos);
-
-        foreach (var item in listOfString)
+        public static void Main(string[] args)
         {
-            Console.WriteLine(item);
+            var controller = new Controller(
+                new TodoListReader(JsonFilePath),
+                new TodoListWriter(JsonFilePath));
+
+            var listOfTodos = controller.HandleCommand(args[0]);
+
+            var listOfString = TodoFormater.Format(listOfTodos);
+
+            foreach (var item in listOfString)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
-
 }

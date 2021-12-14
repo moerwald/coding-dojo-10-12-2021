@@ -1,26 +1,19 @@
-﻿
-using cli.Model;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
+using TodoApp.Model;
 
-public static partial class Program
+namespace TodoApp
 {
+
     public class TodoListReader : ITodoListReader
     {
-        private string filepath;
+        private readonly string _filepath;
 
-        public TodoListReader(string filepath)
-        {
-            this.filepath = filepath ?? throw new NullReferenceException(nameof(filepath));
-
-            // Todo check for existense
-        }
+        public TodoListReader(string filepath) => _filepath = filepath ?? throw new NullReferenceException(nameof(filepath));
 
         public List<Todo> ReadAll() =>
-            JsonConvert.DeserializeObject<List<Todo>>(File.ReadAllText(this.filepath));
+            JsonConvert.DeserializeObject<List<Todo>>(File.ReadAllText(_filepath));
     }
-
 }

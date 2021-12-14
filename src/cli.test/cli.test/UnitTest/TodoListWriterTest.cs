@@ -1,16 +1,11 @@
-﻿using cli.Model;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Program;
 using System.IO;
 using Newtonsoft.Json;
+using TodoApp.Model;
 
-namespace cli.test.UnitTest
+namespace TodoApp.Tests.UnitTest
 {
     [TestFixture]
     public class TodoListWriterTest
@@ -20,7 +15,7 @@ namespace cli.test.UnitTest
         public void Write()
         {
             var filePath = @"C:\todo_ListWriter.json";
-            TodoListWriter writer = new TodoListWriter(filePath);
+            TodoListWriter writer = new(filePath);
 
             var lstTodos = new List<Todo>
             {

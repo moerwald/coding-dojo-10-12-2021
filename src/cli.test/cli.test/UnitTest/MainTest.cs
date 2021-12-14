@@ -1,23 +1,19 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace cli.test.UnitTest
+namespace TodoApp.Tests.UnitTest
 {
     [TestFixture]
     public class MainTest
     {
-        StringWriter _stringWriter = new StringWriter();
+        readonly StringWriter _stringWriter = new();
 
         [SetUp]
         public void Setup()
         {
-            System.Console.SetOut(_stringWriter);
+            Console.SetOut(_stringWriter);
             File.WriteAllText(@"c:\todo_MainTest.json", "[{\"Id\":1,\"Title\":\"Dummy\",\"IsCompleted\":false}, {\"Id\":2,\"Title\":\"Dummy2\",\"IsCompleted\":false}]");
         }
 

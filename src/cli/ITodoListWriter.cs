@@ -1,7 +1,10 @@
-﻿using cli.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using TodoApp.Model;
 
-public interface ITodoListWriter
+namespace TodoApp
 {
-    void WriteAll(List<Todo> lstTodos);
+    public interface ITodoListWriter
+    {
+        void WriteAll(List<Todo> lstTodos);
+    }
 }

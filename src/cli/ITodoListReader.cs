@@ -1,7 +1,10 @@
-﻿using cli.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using TodoApp.Model;
 
-public interface ITodoListReader
+namespace TodoApp
 {
-    List<Todo> ReadAll();
+    public interface ITodoListReader
+    {
+        List<Todo> ReadAll();
+    }
 }

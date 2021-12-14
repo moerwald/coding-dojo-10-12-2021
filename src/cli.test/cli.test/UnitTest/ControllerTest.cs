@@ -1,14 +1,9 @@
-﻿using cli.Model;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Program;
+using TodoApp.Model;
 
-namespace cli.test.UnitTest
+namespace TodoApp.Tests.UnitTest
 {
     [TestFixture]
     public class ControllerTest
