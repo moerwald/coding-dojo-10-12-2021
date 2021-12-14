@@ -22,6 +22,6 @@ jobs:
     - name: Build
       run: dotnet build src --no-restore
     - name: Publish
-      run: dotnet publish src\cli -r ubuntu-x64 --self-contained=true
+      run: dotnet publish src/cli -r ubuntu-x64 --self-contained=true
     - name: Test
       run: dotnet test src --no-build --verbosity normal
