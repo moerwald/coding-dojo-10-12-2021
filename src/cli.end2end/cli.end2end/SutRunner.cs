@@ -14,21 +14,27 @@ namespace TodoApp.End2EndTests
             // use ProcessStartInfo class.
             ProcessStartInfo startInfo = new()
             {
-                CreateNoWindow = false,
                 UseShellExecute = false
             };
 
             // Get path to exe
             var pathToTestDll = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\cli.exe");
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            string pathToExt = string.Empty;
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\ubuntu-x64\publish\cli");
+                startInfo.CreateNoWindow = false;
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+                pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\TodoApp.exe");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\ubuntu-x64\publish\TodoApp");
             }
 
             startInfo.FileName = pathToExt;
 
-            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             startInfo.RedirectStandardOutput = true;
 
             // set arguments.
