@@ -23,7 +23,7 @@ namespace TodoApp.End2EndTests
             var pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\cli.exe");
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\cli");
+                pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\ubuntu-x64\publish\cli");
             }
 
             startInfo.FileName = pathToExt;
