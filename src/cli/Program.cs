@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace TodoApp
 {
@@ -8,6 +9,12 @@ namespace TodoApp
 
         public static void Main(string[] args)
         {
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                JsonFilePath = @"/tmp/todo.json";
+            }
+
             var controller = new Controller(
                 new TodoListReader(JsonFilePath),
                 new TodoListWriter(JsonFilePath));

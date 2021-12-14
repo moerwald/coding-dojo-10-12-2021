@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using TechTalk.SpecFlow;
 
 namespace TodoApp.End2EndTests
@@ -16,8 +17,16 @@ namespace TodoApp.End2EndTests
 
         [Given(@"A file with testdata")]
         public static void GivenAFileWithTestdata()
-            =>
-            File.WriteAllText(@"c:\todo.json", "[{\"Id\":1,\"Title\":\"Dummy\",\"IsCompleted\":false}, {\"Id\":2,\"Title\":\"Dummy2\",\"IsCompleted\":false}]");
+        {
+
+            var path = @"c:\todo.json";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                path = @"/tmp/todo.json";
+            }
+
+            File.WriteAllText(path, "[{\"Id\":1,\"Title\":\"Dummy\",\"IsCompleted\":false}, {\"Id\":2,\"Title\":\"Dummy2\",\"IsCompleted\":false}]");
+        }
 
         [When(@"I start the CLI program with argument ""(.*)""")]
         public void WhenIStartTheCLIProgramWithArgument(string args)

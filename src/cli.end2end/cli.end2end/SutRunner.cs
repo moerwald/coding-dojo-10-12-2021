@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -20,17 +19,17 @@ namespace TodoApp.End2EndTests
             // Get path to exe
             var pathToTestDll = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string pathToExt = string.Empty;
-            
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 startInfo.CreateNoWindow = false;
                 startInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
-                pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\TodoApp.exe");
+                pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net6.0\TodoApp.exe");
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                pathToExt = Path.Combine(pathToTestDll, @"..\..\..\..\..\cli\bin\Debug\net5.0\ubuntu-x64\publish\TodoApp");
+                pathToExt = Path.Combine(pathToTestDll, @"../../../../../cli/bin/Debug/net6.0/ubuntu-x64/publish/TodoApp");
             }
 
             startInfo.FileName = pathToExt;
@@ -41,23 +40,15 @@ namespace TodoApp.End2EndTests
             startInfo.Arguments = args;
 
             var processStdout = string.Empty;
-            try
+            // start with the info we specified.
+            using Process process = Process.Start(startInfo);
+            // Redirect stdout to reader
+            using (StreamReader reader = process.StandardOutput)
             {
-                // start with the info we specified.
-                using Process process = Process.Start(startInfo);
-                // Redirect stdout to reader
-                using (StreamReader reader = process.StandardOutput)
-                {
-                    processStdout = reader.ReadToEnd();
-                }
+                processStdout = reader.ReadToEnd();
+            }
 
-                process.WaitForExit();
-            }
-            catch (Exception ex)
-            {
-                // Log error.
-                Assert.Fail(ex.ToString());
-            }
+            process.WaitForExit();
 
             return processStdout;
         }
