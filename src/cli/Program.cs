@@ -10,6 +10,8 @@ namespace TodoApp
         public static void Main(string[] args)
         {
 
+            // Some test comment
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 JsonFilePath = @"/tmp/todo.json";
